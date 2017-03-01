@@ -16,12 +16,12 @@ public class DBConnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Where is your MySQL JDBC Driver?");
+            System.out.println("Where is MySQL JDBC Driver?");
             e.printStackTrace();
             return;
         }
 
-        System.out.println("MySQL JDBC Driver Registered!");
+        System.out.println("MySQL JDBC Driver Registration complete!");
         Connection connection = null;
 
         try {
@@ -32,9 +32,10 @@ public class DBConnection {
         }
 
         if (connection != null) {
-            System.out.println("SUCCESS!!!! You made it, take control your database now!");
+            System.out.println("Database Connection was successful!!!!!");
         } else {
             System.out.println("FAILURE! Failed to make connection!");
         }
+
     }
 }
