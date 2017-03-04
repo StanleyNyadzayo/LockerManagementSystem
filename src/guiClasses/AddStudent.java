@@ -2,12 +2,8 @@ package guiClasses;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.GridLayout;
-import java.awt.FlowLayout;
 import java.awt.BorderLayout;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.LineBorder;
 
 import classes.Student;
 
@@ -24,7 +20,7 @@ public class AddStudent extends JFrame {
 
     private String[] yearN = new String[]{"Ist year", "Second Year", "Third Year", "Fourth Year"};
     private JComboBox<String> comboxYear = new JComboBox<>(yearN);
-    private JButton addButton, canelButton;
+    private JButton addButton, cancelButton, saveAndEnd;
     private Student student = new Student();
 
     public AddStudent() {
@@ -40,11 +36,11 @@ public class AddStudent extends JFrame {
         subpanel2.add(new JLabel("    "));
 
         subpanel2.add(lno = new JLabel("    L Number"));
-        subpanel2.add(lnotxt = new JTextField(student.getLNumber()));
+        subpanel2.add(lnotxt = new JTextField(Student.getLno()));
         lnotxt.setEditable(false);
 
 
-        subpanel2.add(fname = new JLabel("     FristName"));
+        subpanel2.add(fname = new JLabel("     FirstName"));
         subpanel2.add(fnametxt = new JTextField(10));
 
 
@@ -82,26 +78,29 @@ public class AddStudent extends JFrame {
 
         panel3 = new JPanel(new GridLayout(1, 2));
         panel3.add(addButton = new JButton("ADD"));
-        panel3.add(canelButton = new JButton("CANCEL"));
+        panel3.add(cancelButton = new JButton("CANCEL"));
+        panel3.add(saveAndEnd = new JButton("Save"));
         add(panel3, BorderLayout.SOUTH);
 
 
-        //add anon listener to ok button
-        addButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        //add a listener to ok button
+        addButton.addActionListener(e -> {
 
-                //Hi standly, please put the db code over here.
-                JOptionPane.showMessageDialog(null, "Student is added");
-                dispose();
+            //Hi stanley, please put the db code over here.
+
+            JOptionPane.showMessageDialog(null, "Student is added");
+            dispose();
 
 
-            }
         });
-        canelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Process is canceled");
-                dispose();
-            }
+        cancelButton.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "Process is canceled");
+            dispose();
+        });
+
+        saveAndEnd.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "Saved");
+            dispose();
         });
 
 
