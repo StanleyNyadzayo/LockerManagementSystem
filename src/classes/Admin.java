@@ -1,12 +1,14 @@
+/*  
+ * Admin Class (Ravpreet Kaur)
+ * */
 package classes;
 
 //import java.util.Calendar;
 public class Admin extends Person {
 
-    private final String adminId;
+    private String adminId;
     private String jobTitle;
-    private int number = 1000;
-    //private Calendar bookedDate;
+//	private Calendar bookedDate;
 
     // Constructors to initialize the Instance Variables
     // Default Constructor
@@ -14,23 +16,32 @@ public class Admin extends Person {
     //        Name n1 = new Name();
     public Admin() {
         super();
-        adminId = "A11" + number++;
-        jobTitle = "";
+        adminId = jobTitle = "";
         //bookedDate =  Calendar.getInstance();
     }
 
     // Initialization Constructor
     // ==> Called when a Name object is created as follows -
     //       Name n2 = new Name("Mr","Joe","Cole");
-    private Admin(String firstName, String surname, int age, String address, String jobTitle) throws IllegalArgumentException {
-        super(firstName, surname, age, address);
-        adminId = "A11" + number++;
+    public Admin(String firstName, String surname, int age, String address, String adminId, String jobTitle) throws IllegalArgumentException {
+        super(firstName, surname, address);
+        setAdminId(adminId);
         setJobTitle(jobTitle);
         //bookedDate = Calendar.getInstance();
     }
 
     /**
-     * @return the firstName
+     * @param adminId the adminId to set
+     */
+    public void setAdminId(String adminId) throws IllegalArgumentException {
+        if (adminId.equals("null") || (adminId.isEmpty())) {
+            throw new IllegalArgumentException("Input is Invalid. Please enter again");
+        }
+        this.adminId = adminId;
+    }
+
+    /**
+     * @return the adminId
      */
     public String getAdminId() {
         return adminId;
@@ -39,14 +50,15 @@ public class Admin extends Person {
     /**
      * @param jobTitle the jobTitle to set
      */
-    private void setJobTitle(String jobTitle) throws IllegalArgumentException {
-        if (jobTitle.equals("null") || (jobTitle.isEmpty()))
+    public void setJobTitle(String jobTitle) throws IllegalArgumentException {
+        if (jobTitle.equals("null") || (jobTitle.isEmpty())) {
             throw new IllegalArgumentException("Input is Invalid. Please enter again");
+        }
         this.jobTitle = jobTitle;
     }
 
     /**
-     * @return the firstName
+     * @return the jobTitle
      */
     public String getJobTitle() {
         return jobTitle;

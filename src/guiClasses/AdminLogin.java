@@ -75,6 +75,7 @@ public class AdminLogin extends JFrame {
         //add listener to salaryButton JButton
         addStudent.addActionListener(
                 new ActionListener() {
+                    @Override
                     public void actionPerformed(ActionEvent e) {
                         SecurityDialog dialog = new SecurityDialog();
 

@@ -3,7 +3,6 @@ package guiClasses;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
 import classes.Admin;
 
 public class SecurityDialog extends JDialog {
@@ -82,12 +81,12 @@ public class SecurityDialog extends JDialog {
         // CONSTRUCT a SecurityDialog object called dialog
         SecurityDialog dialog = new SecurityDialog();
 
-        dialog.setTitle("Identity Validation");
+        dialog.setTitle("Pizza Security Screen");
         dialog.pack();
         // Add the DISPOSE_ON_CLOSE operation to dialog
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
-
+  
 }

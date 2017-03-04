@@ -11,7 +11,7 @@ public class AdminFrame {
         Admin returnedValue = new Admin();
 
 
-        // CONSTRUCT a EmployeeFrame object called frame, passing the selected Employee into the constructor
+        // CONSTRUCT a EmployeeFrame object called frame, passing the selected Employee into the constrctor
         AdminLogin frame = new AdminLogin(returnedValue);
 
         // Set up the frame object
