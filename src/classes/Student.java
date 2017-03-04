@@ -4,14 +4,12 @@ import java.util.Calendar;
 
 public class Student extends Person {
     //instance variable
-    private String lno;
-    private String course;
-    private int year;
-    /*@SuppressWarnings("unused")
-    private Calendar holdDate;*/
-    private String paymentStatus;
-    private double quotaBalance;
-    private int number = 10600;
+    public static String lno;
+    public static String course;
+    public static int year;
+    public static String paymentStatus;
+    public static double quotaBalance;
+    public static int number = 10600;
 
     // Constructors to initialize the Instance Variables
     // Default Constructor
@@ -40,9 +38,9 @@ public class Student extends Person {
     }
 
     /**
-     * @return the firstName
+     * @return the LNumber
      */
-    public String getLNumber() {
+    public static String getLno() {
         return lno;
     }
 
@@ -52,11 +50,11 @@ public class Student extends Person {
     public void setCourse(String course) throws IllegalArgumentException {
         if (course.equals("null") || (course.isEmpty() == true))
             throw new IllegalArgumentException("Input is Invalid. Please enter again");
-        this.course = course;
+        Student.course = course;
     }
 
     /**
-     * @return the firstName
+     * @return the course
      */
     public String getCourse() {
         return course;
@@ -68,11 +66,11 @@ public class Student extends Person {
     public void setYear(int year) throws IllegalArgumentException {
         if (year < Calendar.YEAR)
             throw new IllegalArgumentException("Input is Invalid. Please enter again");
-        this.year = year;
+        Student.year = year;
     }
 
     /**
-     * @return the firstName
+     * @return the year
      */
     public int getYear() {
         return year;
@@ -84,11 +82,11 @@ public class Student extends Person {
     public void setPaymentStatus(String paymentStatus) throws IllegalArgumentException {
         if (paymentStatus.equals("null") || (paymentStatus.isEmpty() == true))
             throw new IllegalArgumentException("Input is Invalid. Please enter again");
-        this.paymentStatus = paymentStatus;
+        Student.paymentStatus = paymentStatus;
     }
 
     /**
-     * @return the firstName
+     * @return the paymentStatus
      */
     public String getPaymentStatus() {
         return paymentStatus;
@@ -100,11 +98,11 @@ public class Student extends Person {
     public void setQuotaBalance(double quotaBalance) throws IllegalArgumentException {
         if (quotaBalance <= 0.0)
             throw new IllegalArgumentException("Quota is too low");
-        this.quotaBalance = quotaBalance;
+        Student.quotaBalance = quotaBalance;
     }
 
     /**
-     * @return the firstName
+     * @return the QuotaBalance
      */
     public double getQuotaBalance() {
         return quotaBalance;

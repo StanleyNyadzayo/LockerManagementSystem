@@ -6,10 +6,10 @@ package classes;
 public class Person {
 
     //instance variable
-    private String firstName;
-    private String surname;
-    private int age;
-    private String address;
+    public static String firstName;
+    public static String surname;
+    public static int age;
+    public static String address;
 
     // Constructors to initialize the Instance Variables
     // Default Constructor
@@ -37,7 +37,7 @@ public class Person {
     public void setFirstName(String firstName) throws IllegalArgumentException {
         if (firstName.equals("null") || (firstName.isEmpty() == true))
             throw new IllegalArgumentException("Input is Invalid. Please enter again");
-        this.firstName = firstName;
+        Person.firstName = firstName;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Person {
     public void setSurname(String surname) throws IllegalArgumentException {
         if (surname.equals("null") || (surname.isEmpty() == true))
             throw new IllegalArgumentException("Input is Invalid. Please enter again");
-        this.surname = surname;
+        Person.surname = surname;
     }
 
     /**
@@ -73,7 +73,7 @@ public class Person {
     public void setAge(int age) throws IllegalArgumentException {
         if (age <= 14 || age >= 95)
             throw new IllegalArgumentException("Input is Invalid. Please enter again");
-        this.age = age;
+        Person.age = age;
     }
 
     /**
@@ -89,7 +89,7 @@ public class Person {
     public void setAddress(String address) throws IllegalArgumentException {
         if (address.equals("null") || (address.isEmpty() == true))
             throw new IllegalArgumentException("Input is Invalid. Please enter again");
-        this.address = address;
+        Person.address = address;
     }
 
     /**

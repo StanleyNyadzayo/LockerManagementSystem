@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class WaitingList {
     // an array list where students will be added and removed as needed
-    private ArrayList<Student> waitingListArray;
+    public ArrayList<Student> waitingListArray;
 
 // is the database going to have a copy of the waiting list? If so, then we need to populate the waiting list
 // on opening application and logging in and then save it when logging out

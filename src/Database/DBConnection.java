@@ -1,6 +1,11 @@
 package Database;
 
+import classes.Person;
+import classes.Student;
+
 import java.sql.*;
+
+import static classes.Student.number;
 
 
 /*
@@ -8,18 +13,18 @@ import java.sql.*;
  */
 public class DBConnection {
     public static void main(String[] args) {
+//
+//        System.out.println("----MySQL JDBC Connection Team Project CLGT3 -------");
+        try {
+            createStudentTable();
 
-        System.out.println("----MySQL JDBC Connection Team Project CLGT3 -------");
+        } catch (ClassNotFoundException clfe) {
+            clfe.printStackTrace();
+        }
     }
 
-    private void createStudentTable() throws ClassNotFoundException {
-        String studentTable = "CREATE TABLE Student("
-                + "studentID varchar(10) NOT NULL AUTO_INCREMENT,"
-                + "firstName VARCHAR(15), "
-                + "lastName VARCHAR(15), "
-                + "courseTitle VARCHAR(20),"
-                + "courseYear INT(1),"
-                + "quotaBalance DECIMAL (2, 2)";
+    private static void createStudentTable() throws ClassNotFoundException {
+        //String studentTable = "CREATE TABLE Student(studentno varchar(9) primary key not null, firstName varchar(255), lastName varchar(255), courseTitle varchar(255), courseYear int(1), quotaBalance DECIMAL(2, 2));";
 
 
         try {//Creating the database connection
@@ -39,26 +44,26 @@ public class DBConnection {
                             + ":" + 3306 + "/" + "clgt3DB", "root", "Pomerm.70");
 
             // insert statement to add to database
-            String insertQuery = "insert INTO clgt3DB.Student(studentID, firstName, lastName, courseTitle, courseYear, quotaBalance)" + "VALUES (?, ?, ?, ?, ?, ?)";
+            String insertQuery = "insert INTO Student(studentno, firstName, lastName, courseTitle, courseYear) " + "VALUES (?, ?, ?, ?, ?);";
+            Statement statement = connection.createStatement();
+
 
             // prepared statements for insertQuery
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-            preparedStatement.setString(1, "L0");// auto incremented so it is set to L0
-            preparedStatement.setString(2, "Harold");
-            preparedStatement.setString(3, "Finch");
-            preparedStatement.setString(4, "Ethical Hacking");
-            preparedStatement.setInt(4, '3');
-            preparedStatement.setDouble(5, 9.98);
+            preparedStatement.setString(1, Student.lno.concat(String.valueOf(number)));
+            preparedStatement.setString(2, Student.firstName);
+            preparedStatement.setString(3, Student.surname);
+            preparedStatement.setString(4, Student.course);
+            preparedStatement.setInt(5, Student.year);
 
             //executed prepared statement
             preparedStatement.execute();
 
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM clgt3DB.Student;");
-            statement.executeUpdate(studentTable);
-            System.out.println("Table hopefully Created!!!!!!");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Student;");
+            //statement.executeUpdate(studentTable);
+            System.out.println("Table Created!!!!!!");
             while (resultSet.next())
-                System.out.println(resultSet.getString(1) + resultSet.getString(2) + resultSet.getString(3) + resultSet.getDouble(5));
+                System.out.println(resultSet.getString(1) + ", " + resultSet.getString(2) + ", " + resultSet.getString(3) + ", " + resultSet.getDouble(5));
 
             connection.close();
         } catch (Exception e) {
